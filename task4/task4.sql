@@ -96,3 +96,28 @@ FROM employees
 JOIN departments USING(department_id)
 WHERE salary > (SELECT AVG(salary) FROM employees);
 
+--! LEVEL FOUR
+
+------- 16 --------------- 
+CREATE VIEW EMPLOYEE_DETAILS AS 
+SELECT the FIRST_NAME, LAST_NAME,
+EMAIL, JOB_TITLE, DEPARTMENT_NAME 
+FROM employees
+JOIN jobs USING(job_id)
+JOIN departments USING(department_id);
+SELECT * FROM EMPLOYEE_DETAILS;
+
+------- 17 --------------- 
+SELECT e.FIRST_NAME, e.LAST_NAME, m.HIRE_DATE
+FROM employees e 
+JOIN employees m ON(m.employee_id = e.manager_id)
+WHERE e.hire_date > m.hire_date;
+
+------- 18 --------------- 
+SELECT DEPARTMENT_NAME, LOCATION_ID
+FROM departments 
+LEFT JOIN employees USING(department_id)
+WHERE employee_id IS NULL;
+
+------- 19 --------------- 
+
