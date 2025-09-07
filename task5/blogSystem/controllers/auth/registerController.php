@@ -1,6 +1,7 @@
 <!-- registerController.php -->
 
 <?php
+require_once('core/functions.php');
 require_once('core/validations.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['name'];
@@ -9,10 +10,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
 }
 $error = ValidateRegister($name, $phone, $email, $password);
-if($error){
-    echo "<div class = 'alert alert-danger'>$error</div>";
-    
-
+if(!empty($error)){
+    setMessage('danger', "$error");
+    header('location: index.php?page=register');
 }
 
 ?>

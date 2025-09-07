@@ -1,9 +1,10 @@
 <?php
+require_once("core/functions.php");
 require_once("views/layout/header.php");
 require_once("views/layout/nav.php");
 
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
-
+showMessage();
 switch ($page):
     case 'home':
         include("views/home.php");

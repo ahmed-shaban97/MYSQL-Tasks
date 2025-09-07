@@ -47,5 +47,9 @@ function ValidateRegister($name, $phone, $email, $password)
         return $error;
     };
     return NULL;
+    
 
 }
+// function passwordMatch($password, $confirm_password){
+//     return $password === $confirm_password ? NULL : "Password And Confirm password don't match! ";
+// }
