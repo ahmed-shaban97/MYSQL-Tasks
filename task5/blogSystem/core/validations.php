@@ -1,3 +1,4 @@
+<!-- validation -->
 <?php
 function validateRequire($field, $value)
 {
@@ -44,6 +45,25 @@ function ValidateRegister($name, $phone, $email, $password)
         return $error;
     };
     if($error = validatePassword($password)){
+        return $error;
+    };
+    return NULL;
+    
+
+}
+function ValidateLogin($email, $password)
+{
+    
+    $fields = [
+        'email' => $email,
+        'password' => $password
+    ];
+    foreach ($fields as $field => $value) {
+        if ($error = validateRequire($field, $value)) {
+            return $error;
+        }
+    }
+    if($error = validateEmail($email)){
         return $error;
     };
     return NULL;

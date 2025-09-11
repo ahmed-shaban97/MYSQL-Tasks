@@ -14,5 +14,15 @@ if(!empty($error)){
     setMessage('danger', "$error");
     header('location: index.php?page=register');
 }
+if(registerUser($name,$phone, $email, $password)){
+    setMessage('success', 'Registered Successfully');
+    header('Location: index.php?page=home');
+    exit();
+}else{
+    setMessage('danger', "Fail Register User");
+    header('location: index.php?page=register');
+    exit();
+
+}
 
 ?>

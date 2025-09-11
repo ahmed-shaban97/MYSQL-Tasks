@@ -15,11 +15,17 @@
 
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php?page=contact">Contact</a>
                 </li>
+                <?php if(isset($_SESSION['user'])): ?>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php?page=logout">Logout</a>
+                </li>
+                <?php else: ?>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-                        href="index.php?page=register">Register</a>
+                        href="index.php?page=register">Register</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php?page=login">Login</a>
                 </li>
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php?page=register">Login</a>
-                </li>
+                <?php endif ?>
+
+
             </ul>
         </div>
     </div>
