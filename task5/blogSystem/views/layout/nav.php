@@ -17,6 +17,7 @@
                 </li>
                 <?php if(isset($_SESSION['user'])): ?>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php?page=logout">Logout</a>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php?page=blogs">Blog</a>
                 </li>
                 <?php else: ?>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"

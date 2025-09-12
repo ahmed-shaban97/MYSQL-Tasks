@@ -13,6 +13,7 @@ $error = ValidateRegister($name, $phone, $email, $password);
 if(!empty($error)){
     setMessage('danger', "$error");
     header('location: index.php?page=register');
+    exit();
 }
 if(registerUser($name,$phone, $email, $password)){
     setMessage('success', 'Registered Successfully');

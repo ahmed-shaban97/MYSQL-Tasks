@@ -1,6 +1,6 @@
 <!-- index.php -->
 <?php
-// session_start();
+session_start();
 require_once("core/functions.php");
 require_once("views/layout/header.php");
 require_once("views/layout/nav.php");
@@ -32,8 +32,17 @@ switch ($page):
     case 'login-controller':
         include("controllers/auth/loginController.php");
         break;
+    case 'store-blog':
+        include("controllers/blog/blogController.php");
+        break;
     case 'logout':
         include("controllers/auth/logoutController.php");
+        break;
+    case 'blogs':
+        include("views/blogs/index.php");
+        break;
+    case 'create-blog':
+        include("views/blogs/create.php");
         break;
     default:
         require_once("views/maintenance.php");

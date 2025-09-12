@@ -70,6 +70,15 @@ function ValidateLogin($email, $password)
     
 
 }
-// function passwordMatch($password, $confirm_password){
-//     return $password === $confirm_password ? NULL : "Password And Confirm password don't match! ";
-// }
+function ValidateBlog($title, $content, $image){
+        $fields = [
+        'title' => $title,
+        'content' => $content,
+        'image' => $image
+    ];
+    foreach ($fields as $field => $value) {
+        if ($error = validateRequire($field, $value)) {
+            return $error;
+        }
+    }
+}
