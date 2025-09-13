@@ -74,7 +74,7 @@ function storeBlog($title, $content, $image)
     $realName = pathinfo($image['name'], PATHINFO_FILENAME);
     $extension = pathinfo($image['name'], PATHINFO_EXTENSION);
     $fileName = $realName . "_" . time() . "." . $extension;
-    $pathName = realpath(__DIR__ . "/../../assets/img") . "/" . $fileName;
+    $pathName =__DIR__ . "/../assets/img/" . $fileName;
     if (!move_uploaded_file($image['tmp_name'], $pathName)) {
         die("Fail To Upload Image");
     }
@@ -92,5 +92,13 @@ $sql = "INSERT INTO `posts`(`title`, `content`, `image`, `created_at`, `user_id`
     
 }
 
+function getBlog(){
+    $conn = $GLOBALS['conn'];
+    $user_id = $_SESSION['user']['id'];
+    $sql = "SELECT * FROM `posts` WHERE `user_id` = '$user_id ' ";
+    $res = mysqli_query($conn, $sql);
+    return mysqli_fetch_all($res, MYSQLI_ASSOC);
+
+}
 
 ?>

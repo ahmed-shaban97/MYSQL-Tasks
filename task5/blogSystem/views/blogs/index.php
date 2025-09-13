@@ -1,4 +1,7 @@
 <!-- blog index.php -->
+<?php
+$blogs = getBlog();
+?>
 <!doctype html>
 <html lang="en">
 
@@ -31,37 +34,30 @@
                             <th scope="col" class="text-center" style="width: 15%;">Actions</th>
                         </tr>
                     </thead>
+
                     <tbody>
+                        <?php foreach ($blogs as $blog): ?>
+                        <?php
+                            $base_url = "http://" . $_SERVER["HTTP_HOST"] . "/MYSQL/task5/blogSystem";
+                            $image_path = $base_url . $blog['image'];
+
+                            ?>
                         <tr>
-                            <td><strong>First Blog</strong></td>
+                            <td><strong><?= $blog['title'] ?></strong></td>
                             <td>
-                                <img src="https://via.placeholder.com/100" class="img-fluid rounded shadow-sm"
-                                    alt="Blog Image">
+                                <img src="<?= $image_path ?>" class="img-fluid rounded shadow-sm" alt="Blog Image"
+                                    style="width:150px; height:100px; object-fit:cover;">
+
                             </td>
                             <td>
-                                This is the first blog content. It's just a sample text to show how the content looks
-                                inside the table.
+                                <?= $blog['content'] ?>
                             </td>
                             <td class="text-center">
                                 <button class="btn btn-sm btn-outline-secondary me-1">Edit</button>
                                 <button class="btn btn-sm btn-outline-danger">Delete</button>
                             </td>
                         </tr>
-                        <tr>
-                            <td><strong>Django Tutorial</strong></td>
-                            <td>
-                                <img src="https://via.placeholder.com/100" class="img-fluid rounded shadow-sm"
-                                    alt="Blog Image">
-                            </td>
-                            <td>
-                                A simple Django tutorial blog post. You can describe step by step how to build a project
-                                using Django.
-                            </td>
-                            <td class="text-center">
-                                <button class="btn btn-sm btn-outline-secondary me-1">Edit</button>
-                                <button class="btn btn-sm btn-outline-danger">Delete</button>
-                            </td>
-                        </tr>
+                        <?php endforeach ?>
                     </tbody>
                 </table>
             </div>
